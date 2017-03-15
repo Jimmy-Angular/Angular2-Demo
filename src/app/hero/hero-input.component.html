@@ -1,0 +1,30 @@
+<h4>简单的点击事件：</h4>
+<button (click)="onClick()">Click me!</button>
+<p>{{clickMessage}}</p>
+<h4>添加点击事件：</h4>
+<button (click)=" onClickMe($event) ">No! .. Click me!</button>
+<p>{{ clickMessage }}</p>
+<h4>通过 $event 对象取得用户输入:</h4>
+<input (keyup)=" onKeyUp($event)" (keypress)="onKeyPress($event)">
+<p>{{keyUpMessage}}</p>
+<p>{{inputKey}}</p>
+<p>{{inputKeyPress}}</p>
+<h4>从一个模板引用变量中获得用户输入，也就是使用#标记：</h4>
+<input #box (keyup)=" onKey(box.value)" >
+<p>{{keyUpMessage}}</p>
+<h4>过滤Enter按键：</h4>
+<input #enter (keyup.enter)="onEnter(enter.value)" >
+<p>{{inputKeyEnter}}</p>
+<h4>当把鼠标移开的时候的Blur监听:</h4>
+<input #blur (blur)="onBlur(blur.value)">
+<p>{{inputKeyEnter}}</p>
+<h4>简版英雄指南：</h4>
+<input #newHero
+       (keyup.enter)="addHero(newHero.value)"
+       (blur)="addHero(newHero.value); newHero.value='' ">
+
+<button (click)="addHero(newHero.value)">Add</button>
+
+<ul>
+  <li *ngFor="let hero of heroes">{{hero}}</li>
+</ul>
